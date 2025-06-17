@@ -3,48 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MBTI 心理測驗</title>
+  <title>匿名 MBTI 心理測驗</title>
   <style>
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+      background: linear-gradient(135deg, #f9fbe7, #e3f2fd);
       padding: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
       max-width: 500px;
       width: 100%;
       margin-bottom: 20px;
       transition: all 0.3s ease;
+      text-align: center;
     }
-    h2 { margin-bottom: 10px; }
-    .options button {
+    h2, h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .options button, button {
       margin: 10px 5px;
-      padding: 10px 15px;
+      padding: 10px 20px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
       font-size: 16px;
+      background-color: #42a5f5;
+      color: white;
+    }
+    button:hover {
+      background-color: #1e88e5;
     }
     #resultCard {
       display: none;
     }
     #historyList {
-      margin-top: 20px;
+      margin-top: 15px;
+      text-align: left;
+    }
+    input {
+      padding: 8px;
+      width: 80%;
+      font-size: 16px;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
   <div class="card" id="startCard">
-    <h2>匿名 MBTI 測驗</h2>
-    <input id="nickname" placeholder="請輸入暱稱" required>
-    <br><br>
+    <h2>🧪 匿名 MBTI 測驗</h2>
+    <input id="nickname" placeholder="請輸入暱稱">
+    <br>
     <button onclick="startTest()">開始測驗</button>
   </div>
 
@@ -58,9 +74,10 @@
   </div>
 
   <div class="card" id="resultCard">
-    <h2>你的 MBTI 結果：</h2>
+    <h2>🎯 測驗結果</h2>
     <p id="mbtiResult"></p>
-    <h3>最近測驗紀錄：</h3>
+    <button onclick="restart()">🔁 重測</button>
+    <h3>📜 最近紀錄</h3>
     <ul id="historyList"></ul>
   </div>
 
