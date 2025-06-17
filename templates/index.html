@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>MBTI 心理測驗</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap">
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    p {
+      font-weight: bold;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #42a5f5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e88e5;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <form id="mbtiForm">
+    <h2>匿名 MBTI 測驗</h2>
+
+    <div class="question">
+      <p>1. 聚會結束後你會？</p>
+      <label><input type="radio" name="ei" value="E" required> 精神充滿</label><br>
+      <label><input type="radio" name="ei" value="I"> 精神耗盡</label>
+    </div>
+
+    <div class="question">
+      <p>2. 你更傾向？</p>
+      <label><input type="radio" name="sn" value="S" required> 講求事實</label><br>
+      <label><input type="radio" name="sn" value="N"> 注重想像</label>
+    </div>
+
+    <div class="question">
+      <p>3. 做決策時你依靠？</p>
+      <label><input type="radio" name="tf" value="T" required> 邏輯理性</label><br>
+      <label><input type="radio" name="tf" value="F"> 感受與情緒</label>
+    </div>
+
+    <div class="question">
+      <p>4. 喜歡生活？</p>
+      <label><input type="radio" name="jp" value="J" required> 有計劃與控制</label><br>
+      <label><input type="radio" name="jp" value="P"> 彈性與變化</label>
+    </div>
+
+    <button type="submit">送出測驗</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
