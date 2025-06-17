@@ -50,5 +50,7 @@ def submit():
     return jsonify({"mbti": mbti, "result": result})
 
 if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))  # ← 讓 Render 動態指定 port
     init_db()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=port)
