@@ -47,7 +47,7 @@ def submit():
     conn.commit()
     conn.close()
 
-    return jsonify({"mbti": mbti, "result": result})
+    return jsonify({"mbti": mbti, "result": result_text})
 
 if __name__ == "__main__":
     import os
