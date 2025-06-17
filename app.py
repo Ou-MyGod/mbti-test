@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_file
 import sqlite3
 import os
 from flask_cors import CORS
@@ -94,6 +94,10 @@ def history():
     except Exception as e:
         print("🚨 錯誤發生：", e)
         return jsonify({"error": f"資料庫讀取失敗：{str(e)}"}), 500
+
+@app.route("/download-db")
+def download_db():
+    return send_file("database.db", as_attachment=True)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
