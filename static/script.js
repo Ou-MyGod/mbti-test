@@ -49,12 +49,17 @@ function submitAnswers() {
     body: JSON.stringify({ nickname, answers })
   })
   .then(res => res.json())
- .then(data => {
-  console.log("伺服器回傳資料：", data); // ← 加這行看後端回什麼
-  document.getElementById("questionCard").style.display = "none";
-  document.getElementById("resultCard").style.display = "block";
-  document.getElementById("mbtiResult").innerText = `${nickname}：${data.mbti}｜${data.result}`;
-});
+  .then(data => {
+    console.log("伺服器回傳：", data);
+    document.getElementById("questionCard").style.display = "none";
+    document.getElementById("resultCard").style.display = "block";
+    document.getElementById("mbtiResult").innerText = `${nickname}：${data.mbti}｜${data.result}`;
+    loadHistory();
+  })
+  .catch(err => {
+    console.error("提交錯誤：", err);
+    alert("測驗提交失敗，請稍後再試。");
+  });
 }
 
 function loadHistory() {
@@ -68,5 +73,12 @@ function loadHistory() {
         li.innerText = `${item.nickname}：${item.mbti}｜${item.result}`;
         ul.appendChild(li);
       });
+    })
+    .catch(err => {
+      console.error("讀取歷史紀錄錯誤：", err);
     });
+}
+
+function restart() {
+  location.reload();
 }
