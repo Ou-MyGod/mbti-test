@@ -49,12 +49,12 @@ function submitAnswers() {
     body: JSON.stringify({ nickname, answers })
   })
   .then(res => res.json())
-  .then(data => {
-    document.getElementById("questionCard").style.display = "none";
-    document.getElementById("resultCard").style.display = "block";
-    document.getElementById("mbtiResult").innerText = `${nickname}：${data.mbti}｜${data.result}`;
-    loadHistory();
-  });
+ .then(data => {
+  console.log("伺服器回傳資料：", data); // ← 加這行看後端回什麼
+  document.getElementById("questionCard").style.display = "none";
+  document.getElementById("resultCard").style.display = "block";
+  document.getElementById("mbtiResult").innerText = `${nickname}：${data.mbti}｜${data.result}`;
+});
 }
 
 function loadHistory() {
